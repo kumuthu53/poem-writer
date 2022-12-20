@@ -1,5 +1,6 @@
 import openai
 import json
+from exceptions import ApiKeyNotSetException
 
 
 def get_poem(title, logger):
@@ -9,6 +10,12 @@ def get_poem(title, logger):
         api_key_file = open("api_key.txt", "r")
         get_poem.api_key = api_key_file.read()
         api_key_file.close()
+
+        # Checks if api key is set.
+        if get_poem.api_key == "<YOUR-API-KEY-HERE>":
+            logger.error("Api Key has not been set.")
+
+            raise ApiKeyNotSetException
 
         openai.api_key = get_poem.api_key
 

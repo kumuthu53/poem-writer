@@ -1,6 +1,7 @@
 from flask import Flask, request
 from openai_write import get_poem
 import logging
+from exceptions import ApiKeyNotSetException
 
 # Create an instance of Flask.
 app = Flask("poem-writer")
@@ -40,6 +41,12 @@ def write_poem():
     # Writes the poem by calling the get_poem() method.
     try:
         poem = get_poem(title, logger)
+    except ApiKeyNotSetException as e:
+
+        response["status"] = "error"
+        response["message"] = "Api Key has not been set."
+
+        return response
     except Exception as e:
         logger.error("Error during generating poem.")
 
