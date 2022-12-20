@@ -4,7 +4,7 @@ A simple Flask REST API which writes poems using GPT-3.
 
 ## Medium
 
-Refer to the Medium article for a detailed guide on running this application at [link].
+Refer to the Medium article for a detailed guide on running this application at https://medium.com/@kumuthu53/poem-writer-9d27b7e80ce1.
 
 ## How to Install and Run
 
